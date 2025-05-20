@@ -20,7 +20,7 @@ export default function Editor() {
   // Load blog if editing
   useEffect(() => {
     if (id) {
-      axios.get(`http://localhost:3000/api/blogs/${id}`).then(res => {
+      axios.get(`https://blogapp-fnj5.onrender.com/api/blogs/${id}`).then(res => {
         setTitle(res.data.title);
         setTags(res.data.tags.join(', '));
         setImage(res.data.image);
@@ -33,7 +33,7 @@ export default function Editor() {
   // Auto-save with debounce (5s)
   const saveDraft = useCallback(async () => {
     try {
-      const res = await axios.post('http://localhost:3000/api/blogs/save-draft', {
+      const res = await axios.post('https://blogapp-fnj5.onrender.com/api/blogs/save-draft', {
         id: blogId,
         title,
         tags: tags.split(',').map(t => t.trim()),
@@ -72,7 +72,7 @@ export default function Editor() {
     return;
   }
     try {
-      await axios.post('http://localhost:3000/api/blogs/publish', { // rest API post method to publish a blog
+      await axios.post('https://blogapp-fnj5.onrender.com/api/blogs/publish', { // rest API post method to publish a blog
         id: blogId,
         title,
         image,

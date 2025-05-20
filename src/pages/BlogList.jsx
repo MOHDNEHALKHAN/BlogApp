@@ -7,7 +7,7 @@ export default function BlogList() {
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/blogs').then(res => { // Fetch all blogs from the server
+    axios.get('https://blogapp-fnj5.onrender.com/api/blogs').then(res => { // Fetch all blogs from the server
       setBlogs(res.data);
     });
   }, []);

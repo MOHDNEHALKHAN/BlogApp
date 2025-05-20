@@ -7,7 +7,7 @@ export default function BlogDetail() {
   const [blog, setBlog] = useState(null);
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/api/blogs/${id}`).then(res => setBlog(res.data)); // Fetch blog details using specified ID
+    axios.get(`https://blogapp-fnj5.onrender.com/api/blogs/${id}`).then(res => setBlog(res.data)); // Fetch blog details using specified ID
   }, [id]);
 
   return (
