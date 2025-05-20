@@ -6,7 +6,7 @@ import Blog from './models/Blog.js';
 
 const app = express();
 app.use(cors({
-  origin: 'https://blog-app-rosy-phi.vercel.app/', // http://localhost:5173 here to specify the origin of the frontend
+  origin: 'https://blog-app-rosy-phi.vercel.app', // http://localhost:5173 here to specify the origin of the frontend
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }));
