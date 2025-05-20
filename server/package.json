@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "build":"npm run build"
+    "build": "echo 'No build needed'"
   },
   "author": "MOHD NEHAL KHAN",
   "license": "ISC",
