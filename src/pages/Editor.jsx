@@ -95,6 +95,21 @@ export default function Editor() {
     }
   };
 
+  const handleDelete = async () => {
+  if (!blogId) {
+    setToast({ message: 'No blog to delete.', key: Date.now() });
+    return;
+  }
+  if (!window.confirm('Are you sure you want to delete this blog?')) return;
+  try {
+    await axios.delete(`https://blogapp-fnj5.onrender.com/api/blogs/${blogId}`);
+    setToast({ message: 'Blog deleted!', key: Date.now() });
+    setTimeout(() => navigate('/'), 1500);
+  } catch {
+    setToast({ message: 'Failed to delete blog', key: Date.now() });
+  }
+};
+
   return (
     <div className="bg-slate-800 w-full mx-auto px-4 py-6">
     <div className="bg-slate-800 max-w-4xl mx-auto p-4">
@@ -135,9 +150,13 @@ export default function Editor() {
         <button onClick={publish} className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
           Publish
         </button>
+        <button onClick={handleDelete} className="bg-red-600 text-white px-4 py-2 rounded hover:bg-green-700">
+          Delete
+        </button>
       </div>
       {toast && <Toast key={toast.key} message={toast.message} />}
     </div>
     </div>
   );
 }
+
