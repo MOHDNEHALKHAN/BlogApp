@@ -54,5 +54,18 @@ app.get('/api/blogs/:id', async (req, res) => {
   res.json(blog);
 });
 
+// Route to DELETE requests
+app.delete('/api/blogs/:id', async (req, res) => {
+  try {
+    const deleted = await Blog.findByIdAndDelete(req.params.id);
+    if (!deleted) {
+      return res.status(404).json({ message: 'Blog not found' });
+    }
+    res.json({ message: 'Blog deleted' });
+  } catch (err) {
+    res.status(500).json({ message: 'Error deleting blog' });
+  }
+});
+
 // express server listening on port 3000
 app.listen(3000, () => console.log('Server running on http://localhost:3000'));
